@@ -90,7 +90,7 @@ function(catkin_generate_environment)
       @ONLY)
     catkin_install_python(PROGRAMS
       ${CMAKE_BINARY_DIR}/catkin_generated/installspace/_setup_util.py
-      DESTINATION ${CMAKE_INSTALL_PREFIX})
+      DESTINATION .)
   endif()
 
   if(NOT WIN32)
@@ -102,7 +102,7 @@ function(catkin_generate_environment)
     if(NOT CATKIN_BUILD_BINARY_PACKAGE)
       install(PROGRAMS
         ${CMAKE_BINARY_DIR}/catkin_generated/installspace/env.sh
-        DESTINATION ${CMAKE_INSTALL_PREFIX})
+        DESTINATION .)
     endif()
     # generate and install setup for various shells
     foreach(shell bash sh zsh)
@@ -112,7 +112,7 @@ function(catkin_generate_environment)
       if(NOT CATKIN_BUILD_BINARY_PACKAGE)
         install(FILES
           ${CMAKE_BINARY_DIR}/catkin_generated/installspace/setup.${shell}
-          DESTINATION ${CMAKE_INSTALL_PREFIX})
+          DESTINATION .)
       endif()
     endforeach()
 
@@ -124,14 +124,14 @@ function(catkin_generate_environment)
       @ONLY)
     install(PROGRAMS
       ${CMAKE_BINARY_DIR}/catkin_generated/installspace/env.bat
-      DESTINATION ${CMAKE_INSTALL_PREFIX})
+      DESTINATION .)
     # generate and install setup
     configure_file(${catkin_EXTRAS_DIR}/templates/setup.bat.in
       ${CMAKE_BINARY_DIR}/catkin_generated/installspace/setup.bat
       @ONLY)
     install(FILES
       ${CMAKE_BINARY_DIR}/catkin_generated/installspace/setup.bat
-      DESTINATION ${CMAKE_INSTALL_PREFIX})
+      DESTINATION .)
   endif()
 
   # generate rosinstall file referencing setup.sh
@@ -141,6 +141,6 @@ function(catkin_generate_environment)
   if(NOT CATKIN_BUILD_BINARY_PACKAGE)
     install(FILES
       ${CMAKE_BINARY_DIR}/catkin_generated/installspace/.rosinstall
-      DESTINATION ${CMAKE_INSTALL_PREFIX})
+      DESTINATION .)
   endif()
 endfunction()
